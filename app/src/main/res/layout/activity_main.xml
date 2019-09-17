@@ -7,54 +7,52 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/titletext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/titletext"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
         android:text="GraphGenerator"
-        android:layout_centerHorizontal="true"
         android:textSize="30dp" />
 
     <TextView
+        android:id="@+id/smalltitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/smalltitle"
         android:layout_below="@id/titletext"
-        android:text="Please make a selection."
         android:layout_centerHorizontal="true"
-        android:textSize="25dp"/>
+        android:text="Please make a selection."
+        android:textSize="25dp" />
 
     <Button
+        android:id="@+id/btn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btn1"
-        android:textSize="20dp"
-        android:text="Graphs"
         android:layout_below="@id/smalltitle"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="100dp"
+        android:text="Graphs"
+        android:textSize="20dp" />
 
     <Button
+        android:id="@+id/btn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btn2"
-        android:textSize="20dp"
-        android:text="Canvas"
         android:layout_below="@id/btn1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        android:text="Canvas"
+        android:textSize="20dp" />
 
     <Button
+        android:id="@+id/btn3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btn3"
-        android:textSize="20dp"
-        android:text="Co-ordinates Tracker"
         android:layout_below="@id/btn2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"/>
-
-
+        android:layout_marginTop="50dp"
+        android:text="Co-ordinates Tracker"
+        android:textSize="20dp" />
 
 
 </RelativeLayout>

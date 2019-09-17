@@ -7,24 +7,32 @@
     tools:context=".graphs">
 
     <Button
+        android:id="@+id/sin_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/sin_submit"
-        android:text="Submit"
-        android:layout_toRightOf="@id/sin_edtext"/>
+        android:layout_toRightOf="@id/sin_edtext"
+        android:text="Submit" />
+
+    <Button
+        android:id="@+id/sin_submit1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/sin_submit"
+        android:text="Submit1" />
 
     <EditText
+        android:id="@+id/sin_edtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/sin_edtext"
-        android:hint="Enter value of a in y = m sin x"/>
+        android:hint="Enter value of m in y = m sin x" />
+
 
     <com.jjoe64.graphview.GraphView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:id="@+id/graphviewtest"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
         android:layout_centerInParent="true"
-        android:id="@+id/graphviewtest"/>
+        android:layout_marginTop="100dp" />
 
 
 </RelativeLayout>
