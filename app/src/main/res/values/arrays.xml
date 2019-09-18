@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="functions">
+        <item>Sine</item>
+        <item>Cosine</item>
+        <item>Tangent</item>
+    </string-array>
+
+</resources>
