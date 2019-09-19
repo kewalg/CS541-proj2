@@ -6,4 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".coordi_tracker">
 
+    <View
+        android:id="@+id/coordi_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/coordi_btn"
+        android:layout_marginTop="10dp"
+        android:background="#000000" />
+
+    <Button
+        android:id="@+id/coordi_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="get coordi" />
+
+    <TextView
+        android:id="@+id/coordi_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/coordi_btn"
+        android:text="test"
+        android:textSize="25dp" />
+
 </RelativeLayout>
