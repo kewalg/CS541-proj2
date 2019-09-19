@@ -38,7 +38,8 @@ public class graphs extends AppCompatActivity {
 
         list = findViewById(R.id.ddlist);
         graph = findViewById(R.id.graphviewtest);
-        btn = findViewById(R.id.submit_btn);
+        final Button btn = findViewById(R.id.submit);
+        final Button clear_btn = findViewById(R.id.clear);
         final EditText edt_submit = (EditText) findViewById(R.id.edtext);
 
         final LineGraphSeries<DataPoint> series, series1, series2;
@@ -46,23 +47,171 @@ public class graphs extends AppCompatActivity {
         series1 = new LineGraphSeries<DataPoint>();
         series2 = new LineGraphSeries<DataPoint>();
 
-        adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,functions);
+        adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, functions);
         list.setAdapter(adapter);
 
 
+        clear_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                graph.removeAllSeries();
+                Toast.makeText(graphs.this, "Graphs Cleared!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
         list.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, final int i, long l) {
+                if (isSpinnerInitial) {
+                    isSpinnerInitial = false;
+                    return;
+                }
+
+                if (i == 0){
+                    edt_submit.setHint("Enter value of m in y = m sin x ");
+                }else if(i==1){
+                    edt_submit.setHint("Enter value of m in y = m cos x ");
+                }else {
+                    edt_submit.setHint("Enter value of m in y = m tan x ");
+                }
+                View.OnClickListener phaseHandler = new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (i == 0) {
+                            Toast.makeText(graphs.this, "Sine", Toast.LENGTH_SHORT).show();
+
+                            graph.getViewport().setXAxisBoundsManual(true);
+                            graph.getViewport().setScalable(true);
+                            graph.getViewport().setScrollable(true);
+                            graph.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
+                                @Override
+                                public String formatLabel(double value, boolean isValueX) {
+                                    if (isValueX) {
+                                        return super.formatLabel(value, isValueX) + "π";
+                                    }
+                                    return super.formatLabel(value, isValueX);
+                                }
+                            });
+                            series.setColor(Color.RED);
+                            double x = -5, func1_inputdfinal;
+                            EditText edt_submit = (EditText) findViewById(R.id.edtext);
+                            double func1_inputd = Double.parseDouble(edt_submit.getText().toString());
+
+
+                            for (int i = 0; i < 100; i++) {
+                                x = x + 0.1;
+                                func1_inputdfinal = func1_inputd * Math.sin(x);
+                                series.appendData(new DataPoint(x, func1_inputdfinal), true, 100);
+                            }
+                            graph.addSeries(series);
+
+                        } else if (i == 1) {
+                            Toast.makeText(graphs.this, "Cosine", Toast.LENGTH_SHORT).show();
+
+                            graph.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
+                                @Override
+                                public String formatLabel(double value, boolean isValueX) {
+                                    if (isValueX) {
+                                        return super.formatLabel(value, isValueX) + "π";
+                                    }
+                                    return super.formatLabel(value, isValueX);
+                                }
+                            });
+                            graph.getViewport().setXAxisBoundsManual(true);
+                            graph.getViewport().setScalable(true);
+                            graph.getViewport().setScrollable(true);
+                            series1.setColor(Color.BLUE);
+                            double v = -5, func2_inputdfinal;
+
+                            EditText edt_submit = (EditText) findViewById(R.id.edtext);
+                            double func2_inputd = Double.parseDouble(edt_submit.getText().toString());
+
+
+                            for (int i = 0; i < 100; i++) {
+                                v = v + 0.1;
+                                func2_inputdfinal = func2_inputd * Math.cos(v);
+                                series1.appendData(new DataPoint(v, func2_inputdfinal), true, 100);
+                            }
+                            graph.addSeries(series1);
+                        } else {
+                            Toast.makeText(graphs.this, "Tangent", Toast.LENGTH_SHORT).show();
+                            graph.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
+                                @Override
+                                public String formatLabel(double value, boolean isValueX) {
+                                    if (isValueX) {
+                                        return super.formatLabel(value, isValueX) + "π";
+                                    }
+                                    return super.formatLabel(value, isValueX);
+                                }
+                            });
+                            graph.getViewport().setXAxisBoundsManual(true);
+                            graph.getViewport().setScalable(true);
+                            graph.getViewport().setScrollable(true);
+
+                            double w = -5, func3_inputdfinal;
+                            EditText edt_submit = (EditText) findViewById(R.id.edtext);
+                            double func3_inputd = Double.parseDouble(edt_submit.getText().toString());
+
+
+                            for (int k = 0; k < 100; k++) {
+                                w = w + 0.1;
+                                func3_inputdfinal = func3_inputd * Math.tan(w);
+                                series2.appendData(new DataPoint(w, func3_inputdfinal), true, 100);
+                            }
+                            graph.addSeries(series2);
+
+                        }
+                    }
+                };
+                btn.setOnClickListener(phaseHandler);
+            }
+
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                Toast.makeText(graphs.this, "test", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*list.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (isSpinnerInitial){
                     isSpinnerInitial = false;
                     return;
                 }
-                switch (i) {
 
+                switch (i) {
 
                     case 0:
                         //Toast.makeText(graphs.this, "Position is:" +i, Toast.LENGTH_SHORT).show();
                         btn.setOnClickListener(new View.OnClickListener() {
+
+
                             @Override
                             public void onClick(View view) {
 
@@ -83,7 +232,6 @@ public class graphs extends AppCompatActivity {
                                 });
                                 series.setColor(Color.RED);
                                 double x = -5, func1_inputdfinal;
-
                                 double func1_inputd = Double.parseDouble(edt_submit.getText().toString());
 
                                 for (int i = 0; i < 100; i++) {
@@ -92,152 +240,20 @@ public class graphs extends AppCompatActivity {
                                     series.appendData(new DataPoint(x, func1_inputdfinal), true, 100);
                                 }
                                 graph.addSeries(series);
-
-
                             }
                         });
-
-
                         break;
-
                     case 1:
                         Toast.makeText(graphs.this, "Position is:" +i, Toast.LENGTH_SHORT).show();
                         break;
-
                     case 2:
                         Toast.makeText(graphs.this, "Position is:" +i, Toast.LENGTH_SHORT).show();
                         break;
                 }
+                btn.setOnClickListener(phaseHandler);
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
-        });
-
-    }
-}
-
-
-
-
-
-
-       /* if (position == 0) {
-
-            Toast.makeText(this, "position:" + position, Toast.LENGTH_SHORT).show();*/
-
-        /*    btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    graph.getViewport().setXAxisBoundsManual(true);
-                    graph.getViewport().setScalable(true);
-                    graph.getViewport().setScrollable(true);
-                    //graph.getViewport().setYAxisBoundsManual(true);
-                    //graph.getViewport().setScalableY(true);
-                    //graph.getViewport().setScrollableY(true);
-                    graph.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
-                        @Override
-                        public String formatLabel(double value, boolean isValueX) {
-                            if (isValueX) {
-                                return super.formatLabel(value, isValueX) + "π";
-                            }
-                            return super.formatLabel(value, isValueX);
-                }
-            });
-                    series.setColor(Color.RED);
-                    double x = -5, func1_inputdfinal;
-                    EditText edt_submit = (EditText) findViewById(R.id.edtext);
-                    double func1_inputd = Double.parseDouble(edt_submit.getText().toString());
-                    for (int i = 0; i < 100; i++) {
-                        x = x + 0.1;
-                        func1_inputdfinal = func1_inputd * Math.sin(x);
-                        series.appendData(new DataPoint(x, func1_inputdfinal), true, 100);
-                    }
-                    graph.addSeries(series);
-                }
-            });
-*/
-
-
-/*
-        } else if (position == 1) {
-*/
-            /*btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    graph.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
-                        @Override
-                        public String formatLabel(double value, boolean isValueX) {
-                            if (isValueX) {
-                                return super.formatLabel(value, isValueX) + "π";
-                            }
-                            return super.formatLabel(value, isValueX);
-                        }
-                    });
-                    graph.getViewport().setXAxisBoundsManual(true);
-                    graph.getViewport().setScalable(true);
-                    graph.getViewport().setScrollable(true);
-                    //graph.getViewport().setMaxX(10);
-                    //graph.getViewport().setYAxisBoundsManual(true);
-                    //graph.getViewport().setScalableY(true);
-                    //graph.getViewport().setScrollableY(true);
-                    series1.setColor(Color.BLUE);
-                    double v = -5, func2_inputdfinal;
-
-                    EditText edt_submit = (EditText) findViewById(R.id.edtext);
-                    double func2_inputd = Double.parseDouble(edt_submit.getText().toString());
-
-                    for (int i = 0; i < 100; i++) {
-                        v = v + 0.1;
-                        func2_inputdfinal = func2_inputd * Math.cos(v);
-                        series1.appendData(new DataPoint(v, func2_inputdfinal), true, 100);
-                    }
-                    graph.addSeries(series1);
-
-                }
-            });*/
-            /*Toast.makeText(this, "position:" + position, Toast.LENGTH_SHORT).show();
-
-
-        } else {*/
-
-            /*btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-
-
-                    graph.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
-                        @Override
-                        public String formatLabel(double value, boolean isValueX) {
-                            if (isValueX) {
-                                return super.formatLabel(value, isValueX) + "π";
-                            }
-                            return super.formatLabel(value, isValueX);
-                        }
-                    });
-                    graph.getViewport().setXAxisBoundsManual(true);
-                    graph.getViewport().setScalable(true);
-                    graph.getViewport().setScrollable(true);
-                    //graph.getViewport().setMaxX(10);
-                    //graph.getViewport().setYAxisBoundsManual(true);
-                    //graph.getViewport().setScalableY(true);
-                    //graph.getViewport().setScrollableY(true);
-                    series1.setColor(Color.BLUE);
-                    double v = -5, func2_inputdfinal;
-
-                    EditText edt_submit = (EditText) findViewById(R.id.edtext);
-                    double func2_inputd = Double.parseDouble(edt_submit.getText().toString());
-
-                    for (int i = 0; i < 100; i++) {
-                        v = v + 0.1;
-                        func2_inputdfinal = func2_inputd * Math.tan(v);
-                        series1.appendData(new DataPoint(v, func2_inputdfinal), true, 100);
-                    }
-                    graph.addSeries(series1);
-
-                }
-            });*/
-           /* Toast.makeText(this, "position:" + position, Toast.LENGTH_SHORT).show();*/
+        });*/
