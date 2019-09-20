@@ -16,11 +16,61 @@ import android.widget.Toast;
 public class coordi_tracker extends AppCompatActivity {
 
 
+    float dX;
+    float dY;
+    int lastAction;
+    View.OnTouchListener touchListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coordi_tracker);
-        final Button btn = findViewById(R.id.coordi_btn);
+
+        touchListener = new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                switch (event.getActionMasked()) {
+                    case MotionEvent.ACTION_DOWN:
+                        dX = view.getX() - event.getRawX();
+                        dY = view.getY() - event.getRawY();
+                        lastAction = MotionEvent.ACTION_DOWN;
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        view.setY(event.getRawY() + dY);
+                        view.setX(event.getRawX() + dX);
+                        // Log.i("Tag1","positions are:" + dX +" , " + dY);
+                        
+                        lastAction = MotionEvent.ACTION_MOVE;
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        if (lastAction == MotionEvent.ACTION_DOWN) {
+                            Toast.makeText(coordi_tracker.this, "Clicked!", Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+
+                    default:
+                        return false;
+                }
+                return true;
+            }
+        };
+
+        // 2 - Add a reference to your view that already is stated on the layout
+        final View dragView = findViewById(R.id.circle);
+
+        // 3 - Attac the the TouchListener to your view
+        dragView.setOnTouchListener(touchListener);
+    }
+}
+
+
+
+
+
+
+
+
+        /*final Button btn = findViewById(R.id.coordi_btn);
         final TextView txt = findViewById(R.id.coordi_txt);
         View view = findViewById(R.id.coordi_view);
 
@@ -53,6 +103,4 @@ public class coordi_tracker extends AppCompatActivity {
                 return true;
             }
         };
-        view.setOnTouchListener(touchListener);
-    }
-}
+        view.setOnTouchListener(touchListener);*/

@@ -6,12 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".coordi_tracker">
 
+    <!--  <View
+          android:id="@+id/coordi_view"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_below="@id/coordi_btn"
+          android:layout_marginTop="10dp"
+          android:background="#000000" />
+  -->
     <View
-        android:id="@+id/coordi_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/circle"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_below="@id/coordi_btn"
-        android:layout_marginTop="10dp"
         android:background="#000000" />
 
     <Button
