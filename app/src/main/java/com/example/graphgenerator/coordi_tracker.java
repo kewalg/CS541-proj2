@@ -38,8 +38,7 @@ public class coordi_tracker extends AppCompatActivity {
                     case MotionEvent.ACTION_MOVE:
                         view.setY(event.getRawY() + dY);
                         view.setX(event.getRawX() + dX);
-                        // Log.i("Tag1","positions are:" + dX +" , " + dY);
-                        
+
                         lastAction = MotionEvent.ACTION_MOVE;
                         break;
                     case MotionEvent.ACTION_UP:
@@ -54,11 +53,7 @@ public class coordi_tracker extends AppCompatActivity {
                 return true;
             }
         };
-
-        // 2 - Add a reference to your view that already is stated on the layout
         final View dragView = findViewById(R.id.circle);
-
-        // 3 - Attac the the TouchListener to your view
         dragView.setOnTouchListener(touchListener);
     }
 }
