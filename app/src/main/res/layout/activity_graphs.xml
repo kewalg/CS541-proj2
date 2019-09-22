@@ -4,52 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     tools:context=".graphs">
+
+    <TextView
+        android:id="@+id/titletext2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/luckiest_guy"
+        android:text="Graph Generator"
+        android:textColor="#000000"
+
+        android:textSize="100px" />
 
     <Button
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/edtext"
-        android:text="Submit" />
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="25dp"
+        android:background="#2D2D2D"
+        android:fontFamily="@font/luckiest_guy"
+        android:padding="10dp"
+        android:text="Submit"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
 
     <Button
         android:id="@+id/clear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/edtext"
+        android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/submit"
-        android:text="clear" />
+        android:background="#2D2D2D"
+        android:fontFamily="@font/luckiest_guy"
+        android:padding="10dp"
+        android:text="clear"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
 
-    <!--
-        <Button
-            android:id="@+id/sin_submit1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/sin_edtext"
-            android:layout_toRightOf="@id/sin_submit"
-            android:text="Submit1" />
-    -->
 
     <EditText
         android:id="@+id/edtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/titletext2"
         android:layout_toRightOf="@id/ddlist"
-        android:hint="Make selection" />
+        android:fontFamily="@font/luckiest_guy"
+        android:hint="Make selection and enter the value for amplitude"
+        android:textColorHighlight="#ffffff"
+        android:textColorHint="#40000000"
+        android:textSize="14sp" />
 
     <Spinner
         android:id="@+id/ddlist"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titletext2" />
 
 
     <com.jjoe64.graphview.GraphView
         android:id="@+id/graphviewtest"
         android:layout_width="match_parent"
         android:layout_height="500dp"
+        android:layout_below="@id/clear"
         android:layout_centerInParent="true"
-        android:layout_marginTop="100dp" />
+        android:layout_marginTop="25dp" />
 
 
 </RelativeLayout>

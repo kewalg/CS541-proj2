@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,7 +35,10 @@ public class graphs extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_graphs);
+
 
         list = findViewById(R.id.ddlist);
         graph = findViewById(R.id.graphviewtest);
@@ -68,11 +72,11 @@ public class graphs extends AppCompatActivity {
                     return;
                 }
 
-                if (i == 0){
+                if (i == 0) {
                     edt_submit.setHint("Enter value of m in y = m sin x ");
-                }else if(i==1){
+                } else if (i == 1) {
                     edt_submit.setHint("Enter value of m in y = m cos x ");
-                }else {
+                } else {
                     edt_submit.setHint("Enter value of m in y = m tan x ");
                 }
                 View.OnClickListener phaseHandler = new View.OnClickListener() {
@@ -80,7 +84,6 @@ public class graphs extends AppCompatActivity {
                     public void onClick(View view) {
                         if (i == 0) {
                             Toast.makeText(graphs.this, "Sine", Toast.LENGTH_SHORT).show();
-
                             graph.getViewport().setXAxisBoundsManual(true);
                             graph.getViewport().setScalable(true);
                             graph.getViewport().setScrollable(true);

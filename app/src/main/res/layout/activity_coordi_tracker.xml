@@ -4,13 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="@drawable/bg1"
     tools:context=".coordi_tracker">
+
+
+    <TextView
+        android:id="@+id/titletext1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/luckiest_guy"
+        android:text="Co-ordinates Tracker"
+        android:textColor="#ffffff"
+        android:textSize="35sp" />
 
     <View
         android:id="@+id/circle"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_below="@id/titletext1"
+        android:layout_marginTop="10dp"
         android:background="#ffffff" />
 
     <Button
@@ -19,7 +33,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="get coordinates" />
+        android:layout_marginBottom="10dp"
+        android:background="#2D2D2D"
+        android:fontFamily="@font/luckiest_guy"
+        android:padding="10dp"
+        android:text="get coordinates"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/coordi_txt"
@@ -27,6 +47,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/coordi_btn"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/luckiest_guy"
         android:text=""
         android:textColor="#ffffff"
         android:textSize="25dp" />

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg1"
     tools:context=".MainActivity">
 
     <TextView
@@ -11,9 +12,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="250dp"
         android:text="GraphGenerator"
-        android:textSize="30dp" />
+        android:textColor="#ffffff"
+        android:textSize="40sp"
+        app:fontFamily="@font/luckiest_guy" />
 
     <TextView
         android:id="@+id/smalltitle"
@@ -22,7 +25,10 @@
         android:layout_below="@id/titletext"
         android:layout_centerHorizontal="true"
         android:text="Please make a selection."
-        android:textSize="25dp" />
+        android:textColor="#ffffff"
+
+        android:textSize="20sp"
+        app:fontFamily="@font/luckiest_guy" />
 
     <Button
         android:id="@+id/btn1"
@@ -30,8 +36,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/smalltitle"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="25dp"
+        android:background="#2D2D2D"
+        android:fontFamily="@font/luckiest_guy"
+        android:padding="10dp"
         android:text="Graphs"
+        android:textColor="#ffffff"
         android:textSize="20dp" />
 
     <Button
@@ -40,8 +50,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/btn1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
+        android:background="#2D2D2D"
+        android:fontFamily="@font/luckiest_guy"
+        android:padding="10dp"
         android:text="Canvas"
+        android:textColor="#ffffff"
         android:textSize="20dp" />
 
     <Button
@@ -50,8 +64,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/btn2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
+        android:background="#2D2D2D"
+        android:fontFamily="@font/luckiest_guy"
+        android:padding="10dp"
         android:text="Co-ordinates Tracker"
+        android:textColor="#ffffff"
         android:textSize="20dp" />
 
 

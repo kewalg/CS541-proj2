@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/advent_pro_medium</item>
+        <item>@font/alegreya_sans_sc</item>
+        <item>@font/imprima</item>
+        <item>@font/love_ya_like_a_sister</item>
+        <item>@font/luckiest_guy</item>
+        <item>@font/montserrat</item>
+        <item>@font/roboto</item>
+        <item>@font/ubuntu</item>
+    </array>
+</resources>
