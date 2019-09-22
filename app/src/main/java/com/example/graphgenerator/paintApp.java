@@ -19,11 +19,11 @@ public class paintApp extends View {
     private Path path = new Path();
 
     public paintApp(Context context) {
+        //defining the brush size and color
         super(context);
         brush.setStyle(Paint.Style.STROKE);
         brush.setColor(Color.WHITE);
         brush.setStrokeWidth(50);
-
     }
 
     @Override
@@ -38,9 +38,11 @@ public class paintApp extends View {
         float y = event.getY();
 
         switch (event.getAction()) {
+            //generate the canvas draw on finger touchdown
             case MotionEvent.ACTION_DOWN:
                 path.moveTo(x, y);
                 break;
+            //start drawing a line on finger drag
             case MotionEvent.ACTION_MOVE:
                 path.lineTo(x, y);
                 break;

@@ -27,9 +27,11 @@ public class coordi_tracker extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // for fullscreen view
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_coordi_tracker);
         View.OnTouchListener touchListener;
         touchListener = new View.OnTouchListener() {
@@ -43,6 +45,8 @@ public class coordi_tracker extends AppCompatActivity {
                 Button btn = findViewById(R.id.coordi_btn);
                 final TextView txt = findViewById(R.id.coordi_txt);
                 switch (event.getAction()) {
+
+                    //on touch detection
                     case MotionEvent.ACTION_DOWN: {
                         parms = (RelativeLayout.LayoutParams) view.getLayoutParams();
                         //par = (LinearLayout.LayoutParams) getWindow().findViewById(Window.ID_ANDROID_CONTENT).getLayoutParams();
@@ -51,6 +55,7 @@ public class coordi_tracker extends AppCompatActivity {
                         Log.i("Position 1", "position 1 is:" + dx + " , " + dy);
                     }
                     break;
+                    //on finger movement
                     case MotionEvent.ACTION_MOVE: {
                         x = event.getRawX();
                         y = event.getRawY();
@@ -65,6 +70,7 @@ public class coordi_tracker extends AppCompatActivity {
                         });
                     }
                     break;
+                    //on touch release
                     case MotionEvent.ACTION_UP: {
                     }
                     break;
@@ -76,117 +82,3 @@ public class coordi_tracker extends AppCompatActivity {
         dragView.setOnTouchListener(touchListener);
     }
 }
-
-
-
-/*      final View view = findViewById(R.id.circle);
-        final Button btn = findViewById(R.id.coordi_btn);
-        final TextView txt = findViewById(R.id.coordi_txt);
-        View.OnTouchListener touchListener;
-
-        touchListener = new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent event) {
-                switch (event.getActionMasked()) {
-                    case MotionEvent.ACTION_DOWN:
-                        dX = view.getX() - event.getRawX();
-                        dY = view.getY() - event.getRawY();
-                        lastAction = MotionEvent.ACTION_DOWN;
-                        break;
-
-
-                    case MotionEvent.ACTION_MOVE:
-                        view.setY(event.getRawY() + dY);
-                        view.setX(event.getRawX() + dX);
-                        lastAction = MotionEvent.ACTION_MOVE;
-                        btn.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                txt.setText(dX + " , " + dY);
-                            }
-                        });
-                        break;
-
-
-                    case MotionEvent.ACTION_UP:
-                        if (lastAction == MotionEvent.ACTION_DOWN) {
-                            Toast.makeText(coordi_tracker.this, "Clicked!", Toast.LENGTH_SHORT).show();
-                        }
-                        break;
-
-                    default:
-                        return false;
-                }
-                return true;
-            }
-        };
-        final View dragView = findViewById(R.id.circle);
-        dragView.setOnTouchListener(touchListener);
-
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /*final Button btn = findViewById(R.id.coordi_btn);
-        final TextView txt = findViewById(R.id.coordi_txt);
-        View view = findViewById(R.id.coordi_view);
-
-
-        View.OnTouchListener touchListener = new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent event) {
-                final int x = (int) event.getX();
-                final int y = (int) event.getY();
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        Log.i("TAG", "touched down");
-
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-                        btn.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                Log.i("TAG", "Coordinates are : (" + x + ", " + y + ")");
-                                txt.setText(x + " , " + y);
-                                Toast.makeText(coordi_tracker.this, "Co-ordinates Traced!", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        Log.i("TAG", "touched up");
-                        break;
-                }
-                return true;
-            }
-        };
-        view.setOnTouchListener(touchListener);*/

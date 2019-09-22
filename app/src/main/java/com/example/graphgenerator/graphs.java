@@ -35,6 +35,8 @@ public class graphs extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // for fullscreen view
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_graphs);
@@ -54,7 +56,7 @@ public class graphs extends AppCompatActivity {
         adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, functions);
         list.setAdapter(adapter);
 
-
+        //clear all graphs button
         clear_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,6 +69,8 @@ public class graphs extends AppCompatActivity {
         list.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, final int i, long l) {
+
+                //to avoid spinner from fetching list position at start of activity
                 if (isSpinnerInitial) {
                     isSpinnerInitial = false;
                     return;
@@ -79,11 +83,14 @@ public class graphs extends AppCompatActivity {
                 } else {
                     edt_submit.setHint("Enter value of m in y = m tan x ");
                 }
+
                 View.OnClickListener phaseHandler = new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         if (i == 0) {
                             Toast.makeText(graphs.this, "Sine", Toast.LENGTH_SHORT).show();
+
+                            //make graph scrollable and zoomable
                             graph.getViewport().setXAxisBoundsManual(true);
                             graph.getViewport().setScalable(true);
                             graph.getViewport().setScrollable(true);
@@ -101,7 +108,7 @@ public class graphs extends AppCompatActivity {
                             EditText edt_submit = (EditText) findViewById(R.id.edtext);
                             double func1_inputd = Double.parseDouble(edt_submit.getText().toString());
 
-
+                            //generating and adding data points to graph
                             for (int i = 0; i < 100; i++) {
                                 x = x + 0.1;
                                 func1_inputdfinal = func1_inputd * Math.sin(x);
@@ -121,6 +128,7 @@ public class graphs extends AppCompatActivity {
                                     return super.formatLabel(value, isValueX);
                                 }
                             });
+                            //make graph scrollable and zoomable
                             graph.getViewport().setXAxisBoundsManual(true);
                             graph.getViewport().setScalable(true);
                             graph.getViewport().setScrollable(true);
@@ -130,7 +138,7 @@ public class graphs extends AppCompatActivity {
                             EditText edt_submit = (EditText) findViewById(R.id.edtext);
                             double func2_inputd = Double.parseDouble(edt_submit.getText().toString());
 
-
+                            //generating and adding data points to graph
                             for (int i = 0; i < 100; i++) {
                                 v = v + 0.1;
                                 func2_inputdfinal = func2_inputd * Math.cos(v);
@@ -148,6 +156,7 @@ public class graphs extends AppCompatActivity {
                                     return super.formatLabel(value, isValueX);
                                 }
                             });
+                            //make graph scrollable and zoomable
                             graph.getViewport().setXAxisBoundsManual(true);
                             graph.getViewport().setScalable(true);
                             graph.getViewport().setScrollable(true);
@@ -156,7 +165,7 @@ public class graphs extends AppCompatActivity {
                             EditText edt_submit = (EditText) findViewById(R.id.edtext);
                             double func3_inputd = Double.parseDouble(edt_submit.getText().toString());
 
-
+                            //generating and adding data points to graph
                             for (int k = 0; k < 100; k++) {
                                 w = w + 0.1;
                                 func3_inputdfinal = func3_inputd * Math.tan(w);
