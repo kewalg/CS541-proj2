@@ -26,7 +26,7 @@ Done with draw using finger part and made final UI changes such as adding fonts,
 
 References:
 
-https://stackoverflow.com/questions
-https://youtube.com
+- https://stackoverflow.com/questions
+- https://youtube.com
 
 
