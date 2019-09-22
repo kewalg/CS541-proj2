@@ -15,21 +15,19 @@
         android:id="@+id/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:outlineAmbientShadowColor="#ffffff"
-        android:outlineSpotShadowColor="#ffffff"
         android:layout_centerInParent="true"
-        android:background="@drawable/icon" />
+        android:background="@drawable/icon"
+        android:outlineAmbientShadowColor="#ffffff"
+        android:outlineSpotShadowColor="#ffffff" />
 
     <TextView
         android:id="@+id/splashtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:shadowColor="#ffffff"
-        android:shadowDx="10"
-        android:shadowDy="10"
-        android:shadowRadius="10"
         android:layout_below="@id/icon"
         android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/luckiest_guy"
         android:text="Graphs Generator"
         android:textColor="#ffffff"
         android:textSize="25dp" />

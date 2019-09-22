@@ -39,7 +39,7 @@ public class paintApp extends View {
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                path.moveTo(x,y);
+                path.moveTo(x, y);
                 break;
             case MotionEvent.ACTION_MOVE:
                 path.lineTo(x, y);

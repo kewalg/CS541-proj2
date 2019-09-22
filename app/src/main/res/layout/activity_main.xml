@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="250dp"
-        android:text="GraphGenerator"
+        android:text="Graph Generator"
         android:textColor="#ffffff"
         android:textSize="40sp"
         app:fontFamily="@font/luckiest_guy" />
@@ -26,7 +26,7 @@
         android:layout_centerHorizontal="true"
         android:text="Please make a selection."
         android:textColor="#ffffff"
-
+        android:layout_marginTop="-5dp"
         android:textSize="20sp"
         app:fontFamily="@font/luckiest_guy" />
 
